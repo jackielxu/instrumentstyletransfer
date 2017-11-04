@@ -1,0 +1,3 @@
+[submodule "data/minst-dataset"]
+	path = data/minst-dataset
+	url = https://github.com/ejhumphrey/minst-dataset.git
