@@ -3,4 +3,4 @@
 	url = https://github.com/ejhumphrey/minst-dataset.git
 [submodule "neural-style-audio-tf"]
 	path = neural-style-audio-tf
-	url = https://github.com/DmitryUlyanov/neural-style-audio-tf.git
+	url = https://github.com/DmitryUlyanov/neural-style-audio-tf
