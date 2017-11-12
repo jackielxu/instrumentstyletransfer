@@ -13,4 +13,4 @@ Applying audio style transfer between instruments.
 * [A Neural Algorithm of Artistic Style (Gatys, et. al.](https://arxiv.org/pdf/1508.06576v2.pdf)
 * [Do Androids Dream of Electric Beats? (Foote, et. al.)](https://audiostyletransfer.wordpress.com/)
 * [Style Transfer for Prosodic Speech (Perez, et. al.)](http://web.stanford.edu/class/cs224s/reports/Anthony_Perez.pdf)
-*[Audio Style Transfer (Grinstein, et. al.)](https://arxiv.org/pdf/1710.11385.pdf)
+* [Audio Style Transfer (Grinstein, et. al.)](https://arxiv.org/pdf/1710.11385.pdf)
