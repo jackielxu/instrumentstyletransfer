@@ -5,6 +5,7 @@ from IPython.display import display, Audio
 import numpy as np
 import matplotlib.pyplot as plt
 import argparse
+
 N_FFT = 2048
 NUM_SAMPLES = 430
 NUM_CHANNELS = 1025 # ends up being this way from this many dimension
@@ -102,7 +103,7 @@ def run_optimization(random_kernels, content_refs, style_refs, num_filters, num_
 	    net = tf.nn.relu(conv)
 	    x_content_output.append(net)
 	    input_to_next = net
-            
+
         x_style_output = []
         for i in range(num_layers):
             x_style_output.append(get_style_features(x_content_output[i], num_filters, True)) # True - this is a tensor
@@ -122,7 +123,7 @@ def run_optimization(random_kernels, content_refs, style_refs, num_filters, num_
 	print "Started opt"
 
 	with tf.Session() as sess:
-			
+
  		sess.run(tf.initialize_all_variables())
         	print('Started optimization.')
 		opt.minimize(sess)
@@ -130,8 +131,8 @@ def run_optimization(random_kernels, content_refs, style_refs, num_filters, num_
         	print 'Final loss:', loss.eval()
         	result = x.eval()
 		return result
-        
-    
+
+
 def main(CONTENT_FILENAME, STYLE_FILENAME, OUTPUT_FILENAME, num_filters, num_layers, filter_width, starting):
 #Runs the optimization given the content and style references, and output file to write to.
 #Configurable: num_filters, num_layers, filter width size (filter height is 1)
@@ -190,8 +191,8 @@ def main(CONTENT_FILENAME, STYLE_FILENAME, OUTPUT_FILENAME, num_filters, num_lay
 
 	librosa.output.write_wav(OUTPUT_FILENAME, x, phase)
 
-        
-	
+
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Description of your program')
 	parser.add_argument('-c','--content', help='Path to content filename', required=True)
@@ -204,5 +205,3 @@ if __name__ == '__main__':
 	args = vars(parser.parse_args())
 
 	main(args['content'], args['style'], args['output'], args['filters'], args['layers'], args['filtersize'], args['starting'])
-
-
