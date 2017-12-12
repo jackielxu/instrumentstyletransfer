@@ -8,6 +8,7 @@ Applying audio style transfer between instruments.
 
 ### Referenced Repos:
 * [Audio Style Transfer (Dmitry Ulyanov)](https://github.com/DmitryUlyanov/neural-style-audio-tf)
+    -> Note that, our scripts, style_transfer.py, pool_style_transfer.py is based on models developed in this Github Repo.
 
 ### Research Papers:
 * [A Neural Algorithm of Artistic Style (Gatys, et. al.](https://arxiv.org/pdf/1508.06576v2.pdf)
