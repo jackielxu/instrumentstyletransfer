@@ -82,7 +82,7 @@ def compare_output_spectrogram(time_steps, num_features, content_features,
         loss = content_loss + style_loss
 
         opt = tf.contrib.opt.ScipyOptimizerInterface(
-              loss, method='L-BFGS-B', options={'maxiter': 300})
+              loss, method='L-BFGS-B', options={'maxiter': iterations})
 
         # Optimization
         with tf.Session() as sess:
@@ -111,7 +111,7 @@ def get_output_audio(result, output_file_name):
     librosa.output.write_wav(OUTPUT_FILENAME, x, fs)
 
 
-def main(CONTENT_FILENAME, STYLE_FILENAME, OUTPUT_FILENAME):
+def main(CONTENT_FILENAME, STYLE_FILENAME, OUTPUT_FILENAME, num_hidden_units=1025):
     #Runs the optimization given the content and style references, and output file to write to.
     #Configurable: num_filters, num_layers, filter width size (filter height is 1)
         # 1: load the spectograms - phase is important for recovery later
@@ -140,7 +140,9 @@ if __name__=="__main__":
 	parser = argparse.ArgumentParser(description='Description of your program')
 	parser.add_argument('-c','--content', help='Path to content filename', required=True)
 	parser.add_argument('-s','--style', help='Path to style filename', required=True)
-	parser.add_argument('-o', '--output', help='Path to output wave file to write to', required = True)
-	args = vars(parser.parse_args())
+	parser.add_argument('-o', '--output', help='Path to output wave file to write to', required=True)
+    parser.add_argument('-hu', '--hidden_units', help='Number of hidden units for LSTM', required=False)
 
-	main(args['content'], args['style'], args['output'])
+    args = vars(parser.parse_args())
+    hidden_units = args['hidden_units'] if args['hidden_units'] is not None else num_hidden_units
+	main(args['content'], args['style'], args['output'], hidden_units)
